@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CastPod</string>
+    <string name="todo">TODO</string>
+    <string name="podcast">PODCAST</string>
+</resources>
