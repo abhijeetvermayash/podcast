@@ -1,5 +1,6 @@
 package com.example.podcast;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
-    private EditText et1,et2,et3;
-    private TextView txt1,txt2;
+    private EditText et1, et2, et3;
+    private TextView txt1, txt2;
     private Button btnr;
 
 
@@ -22,34 +23,38 @@ public class Register extends AppCompatActivity {
         btnr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate()){
-                    //upload data to database
-                }
+                if(validate()){
 
+                };
             }
         });
+           txt2.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   startActivity(new Intent(Register.this,Second.class));
+               }
+           });
 
+    }
+    private void setupUIViews() {
+        et1 = (EditText) findViewById(R.id.et1);
+        et2 = (EditText) findViewById(R.id.et2);
+        et3 = (EditText) findViewById(R.id.et3);
+        txt1 = (TextView) findViewById(R.id.txt1);
+        txt2 = (TextView) findViewById(R.id.txt2);
+        btnr = (Button) findViewById(R.id.btnr);
+    }
+    private Boolean validate() {
+        Boolean result = false;
+        String name = et1.getText().toString();
+        String email = et2.getText().toString();
+        String password = et3.getText().toString();
 
+        if (name.isEmpty() && email.isEmpty() && password.isEmpty()) {
+            Toast.makeText(this, "please enter details", Toast.LENGTH_SHORT).show();
+        } else {
+            result = true;
         }
+        return result;
     }
-    private void setupUIViews(){
-        et1=(EditText)findViewById(R.id.et1);
-        et2=(EditText)findViewById(R.id.et2);
-        et3=(EditText)findViewById(R.id.et3);
-        txt1=(TextView)findViewById(R.id.txt1);
-        txt2=(TextView)findViewById(R.id.txt2);
-        btnr=(Button)findViewById(R.id.btnr);
-    }
-     private Boolean validate(){
-        Boolean result=false;
-
-        String name=et1.getText().toString();
-        String password=et3.getText().toString();
-        String email=et2.getText().toString();
-
-        if(name.isEmpty())&& password.isEmpty() && email.isEmpty()){
-             Toast.makeText(this,"please enter details", Toast.LENGTH_SHORT).show();
-         }
-     }
-
 }

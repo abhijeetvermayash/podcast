@@ -13,6 +13,7 @@ public class Second extends AppCompatActivity {
     private EditText etb;
     private TextView txta;
     private TextView txtb;
+    private TextView txtc;
     private Button btn;
     private int counter=5;
 
@@ -22,10 +23,17 @@ public class Second extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         txta=(TextView)findViewById(R.id.txta);
         txtb=(TextView)findViewById(R.id.txtb);
+        txtc=(TextView)findViewById(R.id.txtc);
         eta=(EditText)findViewById(R.id.eta);
         etb=(EditText)findViewById(R.id.etb);
         btn=(Button)findViewById(R.id.btn);
         txtb.setText("number of attempts remaining:5");
+        txtc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRegister();
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +42,10 @@ public class Second extends AppCompatActivity {
             }
         });
     }
+     public void openRegister()   {
+         Intent intent=new Intent(this,Register.class);
+         startActivity(intent);
+     }
     private void validate(String Username,String Password){
         if(Username.equals("Abhijeet")&& Password.equals("8579")){
             Intent intent= new Intent(Second.this,Third.class);
